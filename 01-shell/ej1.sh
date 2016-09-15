@@ -18,11 +18,14 @@ function valida_nota() {
 
   result=$(in_range $x 0 10)
 
-  log $result
+  return_value=$?
+
   echo $result
-  return 0
+  return $return_value
 }
 
 log "Introduce un número entre 0 y 10: "
 resultado=$(valida_nota)
 log $resultado
+
+export resultado

@@ -30,7 +30,26 @@ function in_range() {
   if [[ $val -ge $min && $val -le $max ]]
   then
     echo $val
+    return 0
   else
     echo 'error'
+    return 1
   fi
+}
+
+function valida_nota() {
+
+  read x
+
+  if [[ $(is_integer $x) -eq 1 ]]
+  then
+    x=0
+  fi
+
+  result=$(in_range $x 0 10)
+
+  return_value=$?
+
+  echo $result
+  return $return_value
 }
