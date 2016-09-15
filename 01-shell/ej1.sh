@@ -7,21 +7,22 @@
 
 source fns.sh
 
+function valida_nota() {
 
-echo -n "Introduce un número entre 0 y 10: "
-read x
-
-while [[ $(is_integer $x) -eq 1 ]] 
-do
-  echo $x
-  echo -n "Introduce un número!!: "
   read x
-done
 
-value=${x:=0}
+  if [[ $(is_integer $x) -eq 1 ]] 
+  then
+    x=0
+  fi
 
-result=$(in_range $value 0 10)
+  result=$(in_range $x 0 10)
 
-echo $result
+  log $result
+  echo $result
+  return 0
+}
 
-
+log "Introduce un número entre 0 y 10: "
+resultado=$(valida_nota)
+log $resultado
