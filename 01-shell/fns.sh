@@ -1,5 +1,16 @@
 #!/bin/bash
 
+function log() {
+  msg=$1 
+  echo $msg
+  return 0
+}
+
+function error() {
+  log $1
+  exit 1
+}
+
 function is_integer() {
   var=$1
 
